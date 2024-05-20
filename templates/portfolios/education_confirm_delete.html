@@ -1,0 +1,12 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Delete Education</h1>
+    <p>Are you sure you want to delete education "{{ education.institution }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'portfolio:education_detail' pk=education.pk %}">Cancel</a>
+    </form>
+{% endblock %}

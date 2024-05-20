@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: #05161a;
+        }
+        .container {
+            padding: 40px;
+            border-radius: 20px;
+            border: 8px solid #05161a;
+            box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+                        5px 5px 15px rgba(0,0,0,0.35),
+                        inset -5px -5px 15px rgba(255,255,255,0.1),
+                        inset 5px 5px 15px rgba(0,0,0,0.35);
+        }
+        .form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 25px;
+        }
+        .form h2 {
+            font-weight: 500;
+            color: #fff;
+            letter-spacing: 0.1em;
+        }
+        .inputBox {
+            position: relative;
+            width: 300px;
+        }
+        .inputBox input {
+            padding: 12px 10px 12px 48px;
+            width: 100%;
+            color: #fff;
+            background: #05161a;
+            border: 1px solid #05161a;
+            font-weight: 300;
+            border-radius: 25px;
+            box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+                        5px 5px 15px rgba(0,0,0,0.35);
+            outline: none;
+        }
+        .inputBox input:valid ~ span,
+        .inputBox input:focus ~ span {
+            color: #00dfc4;
+            border: 1px solid #00dfc4;
+            padding: 0 8px;
+            background: #05161a;
+            border-radius: 10px;
+            font-size: 0.6em;
+            letter-spacing: 0.1em;
+            transform: translateX(25px) translateY(-7px);
+        }
+        .inputBox input:valid,
+        .inputBox input:focus {
+            border: 1px solid #00dfc4;
+        }
+        .inputBox span {
+            position: absolute;
+            left: 0;
+            padding: 12px 10px 12px 48px;
+            pointer-events: none;
+            font-size: 16px;
+            font-weight: 300;
+            transition: 0.5s;
+            letter-spacing: 0.05em;
+            color: rgba(255,255,255,0.5);
+        }
+        .inputBox i {
+            position: absolute;
+            top: 15px;
+            left: 16px;
+            width: 25px;
+            padding: 2px 0;
+            padding-right: 8px;
+            color: #00dfc4;
+            border-right: 1px solid #00dfc4;
+        }
+        .inputBox input[type="submit"] {
+            background: #00dfc4;
+            color: #05161a;
+            padding: 10px 0;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
+                        5px 5px 15px rgba(0,0,0,0.35),
+                        inset -5px -5px 15px rgba(255,255,255,0.1),
+                        inset 5px 5px 15px rgba(0,0,0,0.35);
+        }
+        .form p {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.75em;
+            font-weight: 300;
+        }
+        .form p a {
+            font-weight: 500;
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .form p a:hover {
+            text-decoration: underline;
+        }
+        .messages {
+            color:#ff6347;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form action="{% url 'register' %}" method="POST" class="form signup">
+            {% csrf_token %}
+            <h2>Signup</h2>
+            <div class="inputBox">
+                <input type="text" name="username" required>
+                <i class="fa-regular fa-user"></i>
+                <span>Username</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" name="email" required>
+                <i class="fa-regular fa-envelope"></i>
+                <span>Email</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="password" required>
+                <i class="fa-solid fa-lock"></i>
+                <span>Password</span>
+            </div>
+            <div class="inputBox">
+                <input type="password" name="cpassword" required>
+                <i class="fa-solid fa-lock"></i>
+                <span>Confirm password</span>
+            </div>
+            <div class="inputBox">
+                <input type="submit" value="Sign Up">
+            </div>
+            <p>Already a member? <a href="{% url 'login' %}">Login</a></p>
+        </form>
+    </div>
+</body>
+</html>

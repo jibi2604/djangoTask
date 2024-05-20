@@ -1,0 +1,25 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Education List</h1>
+    <ul class="list-unstyled">
+    {% for education in educations %}
+        <li class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+            <a href="{% url 'portfolio:education_detail' pk=education.pk %}">{{ education.institution }}</a>
+            </div>
+            <div class="btn-group" role="group" aria-label="Project Actions">
+    <button type="button" class="btn btn-outline-info"><a href="{% url 'portfolio:education_update' pk=education.pk %}">Update</a></button>
+    <button type="button" class="btn btn-outline-danger"><a href="{% url 'portfolio:education_delete' pk=education.pk %}">Delete</a></button>
+</div>
+        </li>
+    {% endfor %}
+    </ul>
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4 text-center">
+        <a href="{% url 'portfolio:education_create' %}" class="btn btn-dark">Add Educations</a>
+    </div>
+</div>
+{% endblock %}

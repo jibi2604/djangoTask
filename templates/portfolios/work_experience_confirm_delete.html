@@ -1,0 +1,13 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Delete Work Experience</h1>
+    <p>Are you sure you want to delete work experience at "{{ work_experience.company }}"?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Delete</button>
+        <a href="{% url 'portfolio:work_experience_list' %}">Cancel</a>
+    </form>
+{% endblock %}
+

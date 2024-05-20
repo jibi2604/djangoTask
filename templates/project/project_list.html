@@ -1,0 +1,11 @@
+{% extends 'users/base.html' %}
+{% block content %}
+<h1>Project List</h1>
+<ul class="list-unstyled">
+    {% for project in projects %}
+    <li>
+        <a href="{% url 'project:project_detail' pk=project.pk %}">{{ project.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-title">Project Detail</h1>
+        <div class="card-text">
+            <p><strong>Title:</strong> {{ project.title }}</p>
+            <p><strong>Description:</strong> {{ project.description }}</p>
+            <p><strong>Start Date:</strong> {{ project.start_date }}</p>
+            <p><strong>End Date:</strong> {{ project.end_date }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Edit Profile</h2>
+        <form method="post">
+            {% csrf_token %}
+            <div class="border rounded p-3 mb-3 bg-light">
+                <h5 class="card-subtitle mb-2 text-muted">Full Name</h5>
+                {{ form.full_name }}
+            </div>
+            <div class="border rounded p-3 mb-3 bg-light">
+                <h5 class="card-subtitle mb-2 text-muted">Skills</h5>
+                {{ form.skills }}
+            </div>
+            <div class="border rounded p-3 mb-3 bg-light">
+                <h5 class="card-subtitle mb-2 text-muted">Contact Details</h5>
+                {{ form.contact_details }}
+            </div>
+            <button type="submit" class="btn btn-success">Save</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+
+
